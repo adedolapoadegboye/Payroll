@@ -304,15 +304,14 @@ int main() {
                 float totalMonthlyIncome = userMonthlyRate + userMonthlyOvertimeRate;
                 float totalYearlyIncome = userYearlyRate + userYearlyOvertimeRate;
 
-                printf("\n\033[1;32mHere's the breakdown of your gross income (income before tax): \32[0m\n");
+                printf("\n\033[1;32mHere's the breakdown of your gross income (income before tax): \n");
                 printf("\nYour estimated total daily income: %.2f CAD\n", totalDailyIncome);
                 printf("Your estimated weekly income: %.2f CAD\n", totalWeeklyIncome);
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
-                printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
+                printf("Your estimated yearly income: %.2f CAD\33[0m\n", totalYearlyIncome);
 
             }
-
         }
 
     } while (!validChoice);
