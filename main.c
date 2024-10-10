@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <string.h>  // Required for strcmp()
+#include <string.h> // Required for strcmp()
 
-int main() {
+int main()
+{
     // Payroll Calculator;
     char username[20];
     char choice;
     bool validChoice;
     const char *choiceList[] = {"Hourly", "Daily", "Weekly", "Bi-Weekly", "Monthly", "Yearly"};
-    
+
     float hours;
     float days;
     float userHourlyRate;
@@ -17,7 +18,7 @@ int main() {
     float userBiWeeklyRate;
     float userMonthlyRate;
     float userYearlyRate;
-    
+
     float overtimeHours;
     float userHourlyOvertimeRate;
     float userDailyOvertimeRate;
@@ -26,12 +27,15 @@ int main() {
     float userMonthlyOvertimeRate;
     float userYearlyOvertimeRate;
 
+    float overtimeMultiplier = 1.5;
+
     printf("\nWelcome to the Payroll Calculator. Please enter your name to get started: \n");
     scanf("%s", username);
 
     printf("\nHello, %s. Welcome to the Payroll Calculator. \n", username);
 
-    do {
+    do
+    {
         printf("\nPlease choose one of the following income options: \n");
         printf("0. Hourly \n");
         printf("1. Daily \n");
@@ -42,20 +46,26 @@ int main() {
 
         validChoice = scanf(" %c", &choice) == 1 && choice >= '0' && choice <= '5';
 
-        if (!validChoice) {
+        if (!validChoice)
+        {
             printf("\nInvalid choice. Please try again. \n");
             // Clear the input buffer
-            while (getchar() != '\n' && getchar() != EOF);
-        } else {
+            while (getchar() != '\n' && getchar() != EOF)
+                ;
+        }
+        else
+        {
             // Convert character choice to an integer index
             int index = choice - '0';
             const char *userChoice = choiceList[index];
 
             // Clear the input buffer after user input
-            while (getchar() != '\n' && getchar() != EOF);
+            while (getchar() != '\n' && getchar() != EOF)
+                ;
 
             // Use strcmp to compare the strings
-            if (strcmp(userChoice, "Hourly") == 0) {
+            if (strcmp(userChoice, "Hourly") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your hourly rate (CAD)? \n");
                 scanf("%f", &userHourlyRate);
@@ -76,14 +86,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -96,8 +106,9 @@ int main() {
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
                 printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
-
-            } else if (strcmp(userChoice, "Daily") == 0) {
+            }
+            else if (strcmp(userChoice, "Daily") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your daily rate (CAD)? \n");
                 scanf("%f", &userDailyRate);
@@ -118,14 +129,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -138,9 +149,9 @@ int main() {
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
                 printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
-
-
-            } else if (strcmp(userChoice, "Weekly") == 0) {
+            }
+            else if (strcmp(userChoice, "Weekly") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your weekly rate (CAD)? \n");
                 scanf("%f", &userWeeklyRate);
@@ -161,14 +172,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -181,9 +192,9 @@ int main() {
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
                 printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
-
-
-            } else if (strcmp(userChoice, "Bi-Weekly") == 0) {
+            }
+            else if (strcmp(userChoice, "Bi-Weekly") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your bi-weekly rate (CAD)? \n");
                 scanf("%f", &userBiWeeklyRate);
@@ -204,14 +215,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -224,9 +235,9 @@ int main() {
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
                 printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
-
-
-            } else if (strcmp(userChoice, "Monthly") == 0) {
+            }
+            else if (strcmp(userChoice, "Monthly") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your monthly rate (CAD)? \n");
                 scanf("%f", &userMonthlyRate);
@@ -247,14 +258,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -267,9 +278,9 @@ int main() {
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
                 printf("Your estimated yearly income: %.2f CAD\n", totalYearlyIncome);
-
-                
-            } else if (strcmp(userChoice, "Yearly") == 0) {
+            }
+            else if (strcmp(userChoice, "Yearly") == 0)
+            {
                 // Standard rates
                 printf("\nWhat is your yearly rate (CAD)? \n");
                 scanf("%f", &userYearlyRate);
@@ -290,14 +301,14 @@ int main() {
                 printf("\nHow many hours do you usually work overtime in a day? \n");
                 scanf("%f", &overtimeHours);
 
-                userHourlyOvertimeRate = 1.5 * userHourlyRate;
+                userHourlyOvertimeRate = overtimeMultiplier * userHourlyRate;
                 userDailyOvertimeRate = userHourlyOvertimeRate * overtimeHours;
                 userWeeklyOvertimeRate = userDailyOvertimeRate * days;
                 userBiWeeklyOvertimeRate = userWeeklyOvertimeRate * 2;
                 userMonthlyOvertimeRate = userBiWeeklyOvertimeRate * 2;
                 userYearlyOvertimeRate = userMonthlyOvertimeRate * 12;
 
-                // Total Gross Income 
+                // Total Gross Income
                 float totalDailyIncome = userDailyRate + userDailyOvertimeRate;
                 float totalWeeklyIncome = userWeeklyRate + userWeeklyOvertimeRate;
                 float totalBiWeeklyIncome = userBiWeeklyRate + userBiWeeklyOvertimeRate;
@@ -309,8 +320,7 @@ int main() {
                 printf("Your estimated weekly income: %.2f CAD\n", totalWeeklyIncome);
                 printf("Your estimated biweekly income: %.2f CAD\n", totalBiWeeklyIncome);
                 printf("Your estimated monthly income: %.2f CAD\n", totalMonthlyIncome);
-                printf("Your estimated yearly income: %.2f CAD\33[0m\n", totalYearlyIncome);
-
+                printf("Your estimated yearly income: %.2f CAD\033[0m\n", totalYearlyIncome);
             }
         }
 

@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/adegnssprojects/Desktop/CProjects/NamePrinter/src",
-      "program": "/Users/adegnssprojects/Desktop/CProjects/NamePrinter/src/build/Debug/outDebug"
+      "cwd": "/Users/adegnssprojects/Desktop/CProjects/Payroll",
+      "program": "/Users/adegnssprojects/Desktop/CProjects/Payroll/build/Debug/outDebug"
     },
     {
       "name": "C/C++: gcc build and debug active file",
